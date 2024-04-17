@@ -11,7 +11,7 @@
 
   #clientsSection,
   #prospectsSection {
-    display: none !important;
+    display: none;
   }
 
   #choice {

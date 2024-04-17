@@ -10,7 +10,18 @@ function afficherProspects() {
     document.getElementById("choice").style.display = "none";
 }
 
+// Initialisation des composants Materialize
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('select').formSelect();
+    $('.datepicker').datepicker();
+    $('.timepicker').timepicker();
+    $('.tooltipped').tooltip();
+    $('.modal').modal();
+    $('.dropdown-trigger').dropdown();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
-    var element = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(element);
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
 });
