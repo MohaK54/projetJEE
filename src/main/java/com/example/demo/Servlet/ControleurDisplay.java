@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Servlet;
 
 import com.example.demo.dao.DaoClient;
 import com.example.demo.model.Client;

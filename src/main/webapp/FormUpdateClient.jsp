@@ -1,6 +1,7 @@
 <%@ page import="com.example.demo.model.Client" %>
 <%@ page import="com.example.demo.dao.DaoClient" %>
 <%@ page import="com.example.demo.model.Prospect" %>
+<%@ page import="javax.swing.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,6 +22,8 @@
         <div class="row">
             <% Client client = (Client) request.getAttribute("client");
                 String rs = client.getRaisonSociale();
+                System.out.println(rs);
+                JOptionPane.showMessageDialog(null,rs);
                 String tel = client.getTelephone();
                 String mail = client.getAdresseMail();
                 String numrue = client.getNumeroRue();
@@ -35,43 +38,43 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="raisonSocial">Raison Social</label>
-                        <input id="raisonSocial" name="raisonSocial" type="text" class="validate" value=<%= rs  %>>
+                        <input id="raisonSocial" name="raisonSocial" type="text" class="validate" value='<%=rs%>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="prenom">Téléphone</label>
-                        <input id="prenom" name="telephone" type="text" class="validate" value=<%= tel %>>
+                        <input id="prenom" name="telephone" type="text" class="validate" value='<%= tel %>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="email" class="validate" value=<%= mail %>>
+                        <input id="email" name="email" type="email" class="validate" value='<%= mail %>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="telephone">Numéro Rue</label>
-                        <input id="telephone" name="numeroRue" type="number" class="validate" value=<%= numrue %>>
+                        <input id="telephone" name="numeroRue" type="number" class="validate" value='<%= numrue %>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="adresse">Nom Rue</label>
-                        <input id="adresse" name="nomRue" type="text" class="validate" value=<%= nomrue %>>
+                        <input id="adresse" name="nomRue" type="text" class="validate" value=<%= nomrue %>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="ville">Ville</label>
-                        <input id="ville" name="ville" type="text" class="validate" value=<%= ville %>>
+                        <input id="ville" name="ville" type="text" class="validate" value='<%= ville %>'>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="codepostal">Code Postal</label>
-                        <input id="codepostal" name="codePostal" type="number" class="validate" value=<%=cp %>>
+                        <input id="codepostal" name="codePostal" type="number" class="validate" value='<%=cp %>'>
                     </div>
                 </div>
                 <div class="row">
@@ -105,11 +108,7 @@
     </div>
 </main>
 <jsp:include page="footer.jsp" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Importation de la bibliothèque Materialize JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="public/script/Accueil.js"></script>
+
 </body>
 </html>
 

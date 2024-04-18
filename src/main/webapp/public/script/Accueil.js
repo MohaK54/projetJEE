@@ -20,8 +20,16 @@ $(document).ready(function(){
     $('.modal').modal();
     $('.dropdown-trigger').dropdown();
 });
+function copierNom(nomClient) {
+    var champSaisie = document.getElementById('client');
+    champSaisie.value = nomClient;
+    console.log('Nom inséré dans le champ de saisie :', nomClient);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, options);
 });
+
+
+

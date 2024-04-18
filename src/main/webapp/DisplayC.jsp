@@ -22,11 +22,11 @@
                     <tr>
                         <th>Raison Social</th>
                         <th>Téléphone</th>
-                        <th>Email</th>
+                        <th>Code Postal</th>
                         <th>Numéro Rue</th>
                         <th>Nom rue</th>
                         <th>Ville</th>
-                        <th>Code Postal</th>
+                        <th>Email</th>
                         <th>Chiffre d'Affaire</th>
                         <th>Nombre d'Employé</th>
                     </tr>
@@ -51,10 +51,5 @@
     </div>
     </main>
 <jsp:include page="footer.jsp" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Importation de la bibliothèque Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="public/script/Accueil.js"></script>
 </body>
 </html>

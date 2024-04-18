@@ -1,25 +1,21 @@
-package com.example.demo;
+package com.example.demo.Servlet;
 
-import com.example.demo.dao.DaoClient;
-import com.example.demo.dao.DaoProspect;
-import com.example.demo.model.Client;
-import com.example.demo.model.Prospect;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import com.example.demo.model.Client;
+import com.example.demo.dao.DaoClient;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
 
-@WebServlet(name = "formulaireProspect", value = "/formulaireProspect")
-public class ControleurFormP extends HttpServlet {
+@WebServlet(name = "formulaireClient", value = "/formulaireClient")
+public class ControleurFormC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/FormP.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/FormC.jsp");
         dispatcher.forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -32,21 +28,22 @@ public class ControleurFormP extends HttpServlet {
         String ville = request.getParameter("ville");
         String codePostal = request.getParameter("codePostal");
         String commentaire = request.getParameter("commentaire");
-        String date = request.getParameter("date");
-        LocalDate localDate = LocalDate.parse(date);
-        String interet = request.getParameter("interet");
+        double chiffreAffaire = Double.parseDouble(request.getParameter("chiffreAffaire"));
+        int nombreEmploye = Integer.parseInt(request.getParameter("nombreEmploye"));
         try {
             // Création de l'objet Client
-            Prospect nouveauProspect = new Prospect(1,raisonSocial,numeroRue,nomRue,codePostal,ville,telephone,email,commentaire,localDate,interet);
+            Client nouveauClient = new Client(1,raisonSocial,numeroRue,nomRue,codePostal,ville,telephone,email,commentaire,chiffreAffaire,nombreEmploye);
 
             // Appel de la méthode create de votre DAO pour insérer le nouveau client dans la base de données
-            DaoProspect.create(nouveauProspect); // Initialisez votre DAO comme vous le faites habituellement
+            DaoClient.create(nouveauClient); // Initialisez votre DAO comme vous le faites habituellement
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
 
         // Redirection vers une autre page par exemple
-        response.sendRedirect("display");
+        response.sendRedirect("displayC");
     }
 }
+
+

@@ -20,14 +20,17 @@
 <table>
     <thead>
     <tr>
-        <th>Clients</th>
+        <th class="center" colspan="2"> <h5>Clients </h5></th>
     </tr>
     </thead>
     <tbody>
     <% for (String rs : (List<String>) request.getAttribute("raisonSocials")) { %>
     <tr>
-        <td>
+        <td style="border-right: unset; border-radius: unset">
             <%= rs %>
+        </td>
+        <td style="border-left: unset; border-radius: unset">
+            <button onclick="copierNom('<%=(rs) %>')">Séléctionner</button>
         </td>
     </tr>
     <% } %>

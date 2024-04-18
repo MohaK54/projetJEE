@@ -1,7 +1,6 @@
-package com.example.demo;
+package com.example.demo.Servlet;
 
 import com.example.demo.dao.DaoClient;
-import com.example.demo.dao.daoException;
 import com.example.demo.model.Client;
 import com.example.demo.model.modelException;
 import jakarta.servlet.RequestDispatcher;
@@ -26,17 +25,19 @@ public class ControleurUpdateClient extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            if (!test) {
+            if (!test ||request.getParameter("raisonSocial") == null) {
                 HttpSession session = request.getSession();
                 String rs = (String) session.getAttribute("raisonSocial");
                 client = DaoClient.findByName(rs);
                 request.setAttribute("client", client);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/FormUpdateClient.jsp");
                 dispatcher.forward(request, response);
-                test = true;
-            } else {
-
+                System.out.println(client.getRaisonSociale());
+                System.out.println(rs);
+                test=true;
+            } else{
             String raisonSocial = request.getParameter("raisonSocial");
+                System.out.println(raisonSocial);
             String telephone = request.getParameter("telephone");
             String email = request.getParameter("email");
             String numeroRue = request.getParameter("numeroRue");
@@ -97,6 +98,8 @@ public class ControleurUpdateClient extends HttpServlet {
     }
 
     public void destroy() {
+        test=false;
+        super.destroy();
     }
 }
 

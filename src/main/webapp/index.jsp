@@ -11,6 +11,7 @@
 <body>
 <jsp:include page="header.jsp" />
 <main>
+
     <h1 class="center">QUE SOUHAITEZ-VOUS MANIPULER</h1>
     <div id="choice" class="row">
         <div class="col m6 s12 button-container">
@@ -61,10 +62,6 @@
     </div>
 </main>
 <jsp:include page="footer.jsp" />
-<!-- Importation de jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Importation de la bibliothèque Materialize JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="public/script/Accueil.js"></script>
+
 </body>
 </html>

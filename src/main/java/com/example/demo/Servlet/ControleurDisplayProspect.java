@@ -1,8 +1,6 @@
-package com.example.demo;
+package com.example.demo.Servlet;
 
-import com.example.demo.dao.DaoClient;
 import com.example.demo.dao.DaoProspect;
-import com.example.demo.model.Client;
 import com.example.demo.model.Prospect;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

@@ -38,26 +38,31 @@
                 <div class="card-content">
                   <span class="card-title center-align">Connexion</span>
                   <div class="row">
-                    <form class="col s12">
+                    <form action="loggin" method="post" class="col s12">
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="email" type="email" class="validate">
+                          <input name="email" id="email" type="email" class="validate">
                           <label for="email">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="password" type="password" class="validate">
+                          <input name="password" id="password" type="password" class="validate">
                           <label for="password">Mot de passe</label>
                         </div>
                       </div>
                       <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s12 center">
                           <button class="btn waves-effect waves-light" type="submit" name="action">Connexion
                             <i class="material-icons right">send</i>
                           </button>
                         </div>
                       </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p class="center-align">Vous n'avez pas de compte ? <a href="Inscription.jsp">Inscrivez-vous</a></p>
+                            </div>
+                        </div>
                     </form>
                   </div>
                 </div>
@@ -68,11 +73,5 @@
       </main>
     <jsp:include page="footer.jsp" />
 
-
-      <!-- Importation de jQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <!-- Importation de la bibliothèque Materialize JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="public/script/Accueil.js"></script>
     </body>
     </html>
