@@ -4,6 +4,7 @@ import com.example.demo.model.Client;
 import com.example.demo.model.Prospect;
 import com.example.demo.model.User;
 import com.example.demo.model.modelException;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.*;
@@ -39,6 +40,11 @@ public class DaoUser {
              )
         )
         {
+            String Password = user.getPassword();
+
+            String hashedPassword = BCrypt.hashpw(Password, BCrypt.gensalt());
+
+            user.setPassword(hashedPassword);
 
             statement.setString(1, user.getMail());
             statement.setString(2, user.getUser());
@@ -54,5 +60,15 @@ public class DaoUser {
         } catch (IOException ie) {
             throw new daoException(Level.SEVERE, "erreur Create User " + ie.getMessage());
         }
+    }
+    public static boolean authenticate(String email, String password) throws Exception {
+
+        // Récupérez le mot de passe haché de l'utilisateur depuis la base de données;
+        User user = findByMail(email);
+
+        String hashedPassword = user.getPassword();
+
+        // Vérifiez si le mot de passe donné correspond au mot de passe haché
+        return BCrypt.checkpw(password, hashedPassword);
     }
 }

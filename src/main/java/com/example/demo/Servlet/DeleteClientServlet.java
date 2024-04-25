@@ -2,6 +2,7 @@ package com.example.demo.Servlet;
 
 import com.example.demo.dao.DaoClient;
 import com.example.demo.model.Client;
+import com.example.demo.utilities.Tokken;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import javax.swing.*;
 import java.io.IOException;
 
 
@@ -35,9 +37,16 @@ public class DeleteClientServlet extends HttpServlet {
                 dispatcher.forward(request, response);
                 test = true;
             } else {
-                DaoClient.delete(client.getIdentifiant());
-                response.sendRedirect("displayC");
-                test = false;
+                String csrfToken = request.getParameter("csrfToken");
+                String sessionToken = Tokken.getToken();
+                if (csrfToken != null && csrfToken.equals(sessionToken)) {
+                    DaoClient.delete(client.getIdentifiant());
+                    response.sendRedirect("displayC");
+                    test = false;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Warning user wuld lhram roh l'accueil");
+                    response.sendRedirect("index.jsp");
+                }
             }
 
         } catch (Exception e) {

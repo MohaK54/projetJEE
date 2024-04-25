@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.utilities.VerifMail;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
     private String user;
@@ -39,4 +40,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

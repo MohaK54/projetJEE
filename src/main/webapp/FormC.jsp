@@ -1,16 +1,24 @@
+<%@ page import="com.example.demo.utilities.Tokken" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Formulaire Materialize</title>
+    <title>Formulaire</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./public/css/Accueil.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="public/css/Accueil.css" media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 <jsp:include page="header.jsp" />
+<dialog id="maBoiteDeDialogue">
+    <h2>Boîte de dialogue</h2>
+    <p>Ceci est une boîte de dialogue simple en HTML.</p>
+    <!-- Bouton pour fermer la boîte de dialogue -->
+    <button id="boutonFermer">Fermer</button>
+</dialog>
+
     <main>
     <div class="container">
         <h2 class="center-align">Client</h2>
@@ -76,6 +84,7 @@
                         <input id="date" name="nombreEmploye" type="number" class="validate">
                     </div>
                 </div>
+                <input type="hidden" name="csrfToken" value="<%= Tokken.getToken() %>">
                 <div class="row">
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Créer

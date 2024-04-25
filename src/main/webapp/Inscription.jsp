@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.demo.utilities.Tokken" %><%--
   Created by IntelliJ IDEA.
   User: CDA01
   Date: 18/04/2024
@@ -44,6 +44,7 @@
             <label for="confirmPassword">Confirmer le mot de passe</label>
         </div>
     </div>
+    <input type="hidden" name="csrfToken" value="<%= Tokken.getToken() %>">
     <div class="row">
         <div class="input-field col s12">
             <button class="btn waves-effect waves-light" type="submit" name="action">S'inscrire

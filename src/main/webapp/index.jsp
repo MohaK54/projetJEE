@@ -1,17 +1,20 @@
+<%@ page import="com.example.demo.utilities.Tokken" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% Tokken.generateTokken(); %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Accueil</title>
     <link type="text/css" rel="stylesheet" href="public/materialize/css/materialize.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="./public/css/Accueil.css"  media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+
 <body>
 <jsp:include page="header.jsp" />
-<main>
 
+<main>
     <h1 class="center">QUE SOUHAITEZ-VOUS MANIPULER</h1>
     <div id="choice" class="row">
         <div class="col m6 s12 button-container">

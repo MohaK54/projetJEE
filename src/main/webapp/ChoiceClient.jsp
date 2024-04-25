@@ -1,4 +1,5 @@
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.demo.utilities.Tokken" %><%--
   Created by IntelliJ IDEA.
   User: CDA01
   Date: 16/04/2024
@@ -43,8 +44,10 @@
      action = "choiceClientD";
 } %>
 <form method="post" action=<%=action%>>
-    <label for="client">Quel Client voulez-Vous modifier ?</label>
+    <label for="client">Client choisis</label>
     <input id="client" name="client" type="text" class="validate">
+    <input type="hidden" name="csrfToken" value="<%= Tokken.getToken() %>">
+
     <button class="btn waves-effect waves-light" type="submit" name="action">choisir
         <i class="material-icons right">send</i>
     </button>

@@ -1,5 +1,6 @@
 <%@ page import="com.example.demo.model.Client" %>
 <%@ page import="com.example.demo.dao.DaoClient" %>
+<%@ page import="com.example.demo.utilities.Tokken" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -91,6 +92,7 @@
                         <input id="date" name="nombreEmploye" type="number" class="validate" value=<%= nbre%>>
                     </div>
                 </div>
+                <input type="hidden" name="csrfToken" value="<%= Tokken.getToken() %>">
                 <div class="row">
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Supprimer

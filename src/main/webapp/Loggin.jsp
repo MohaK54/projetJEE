@@ -1,3 +1,4 @@
+<%@ page import="com.example.demo.utilities.Tokken" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -51,6 +52,7 @@
                           <label for="password">Mot de passe</label>
                         </div>
                       </div>
+                        <input type="hidden" name="csrfToken" value="<%= Tokken.getToken() %>">
                       <div class="row">
                         <div class="input-field col s12 center">
                           <button class="btn waves-effect waves-light" type="submit" name="action">Connexion
