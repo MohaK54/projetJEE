@@ -36,15 +36,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MohaK54_projetJEE
 
-      - name: Envoyer une notification
+      - name: Envoyer un commentaire
         if: ${{ always() }} # Cette étape s'exécute toujours, quelle que soit la réussite ou l'échec des étapes précédentes
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-           github.issues.createComment({
-             issue_number: context.issue.number,
-             owner: context.repo.owner,
-             repo: context.repo.repo,
-             body: 'La construction et l\'analyse sont maintenant terminées.'
-           })
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"body": "La construction et l\'analyse sont maintenant terminées."}' \
+            "https://api.github.com/repos/MohaK54/projetJEE/issues/${{ github.event.issue.number }}/comments"
+      
