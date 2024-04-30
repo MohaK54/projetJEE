@@ -31,5 +31,6 @@ public class ServletIndex extends HttpServlet {
 
 
     public void destroy() {
+
     }
 }

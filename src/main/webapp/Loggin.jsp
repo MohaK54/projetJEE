@@ -62,6 +62,17 @@
                       </div>
                         <div class="row">
                             <div class="col s12">
+                                <p class="center-align">
+                                    <!-- Assurez-vous que la checkbox est à l'intérieur de la balise form -->
+                                    <label>
+                                        <input type="checkbox" id="garderSessionOuverte" name="garderSessionOuverte" />
+                                        <span>Garder ma session ouverte</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
                                 <p class="center-align">Vous n'avez pas de compte ? <a href="Inscription.jsp">Inscrivez-vous</a></p>
                             </div>
                         </div>

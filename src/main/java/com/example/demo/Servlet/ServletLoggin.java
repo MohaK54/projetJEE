@@ -4,6 +4,7 @@ import com.example.demo.dao.DaoUser;
 import com.example.demo.model.User;
 import com.example.demo.utilities.Tokken;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,17 +19,23 @@ import java.io.IOException;
 public class ServletLoggin extends HttpServlet {
     public static HttpSession session;
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (session != null){
+            session = request.getSession();
             session.invalidate();
             session = null;
+
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Loggin.jsp");
-        dispatcher.forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Loggin.jsp");
+            dispatcher.forward(request, response);
+
+
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String csrfToken = request.getParameter("csrfToken");
         String sessionToken = Tokken.getToken();
+        boolean garderSessionOuverte = request.getParameter("garderSessionOuverte") != null;
         if (csrfToken != null && csrfToken.equals(sessionToken)) {
             String eMail = request.getParameter("email");
             String passWord = request.getParameter("password");
@@ -39,6 +46,14 @@ public class ServletLoggin extends HttpServlet {
                     session = request.getSession();
                     session.setAttribute("userName", user.getUser());
                     session.setAttribute("mail", user.getMail());
+                    if (garderSessionOuverte) {
+                        // Définir une durée de session très longue ou aucune limite
+                        session.setMaxInactiveInterval(-1); // Session indéfinie
+                        System.out.println("vous resterez connecté");
+                    } else {
+                        session.setMaxInactiveInterval(30); // 30 minutes (durée par défaut)
+                        System.out.println("connexion de 30 secondes");
+                    }
                     response.sendRedirect("index");
                 } else {
                     System.out.println(DaoUser.authenticate(eMail, passWord));
