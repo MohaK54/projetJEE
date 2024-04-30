@@ -30,6 +30,18 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+                          - name: Envoyer une notification
+                          if: ${{ always() }} # Cette étape s'exécute toujours, quelle que soit la réussite ou l'échec des étapes précédentes
+                          uses: actions/github-script@v4
+                          with:
+                            github-token: ${{ secrets.GITHUB_TOKEN }}
+                            script: |
+                              github.issues.createComment({
+                                issue_number: context.issue.number,
+                                owner: context.repo.owner,
+                                repo: context.repo.repo,
+                                body: 'La construction et l\'analyse sont maintenant terminées.'
+                              })
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
