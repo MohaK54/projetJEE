@@ -16,6 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "choiceClient", value = {"/choiceClient","/choiceClientD"})
 public class ChoiceClientServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
 
@@ -45,11 +46,12 @@ public class ChoiceClientServlet extends HttpServlet {
             }
 
 
-        } catch (Exception e) {
-            throw new ServletException("Erreur lors de la récupération des clients", e);
+        } catch (Exception de) {
+            response.sendRedirect("Error.jsp");
         }
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 

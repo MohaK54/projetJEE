@@ -22,14 +22,20 @@ public class ControleurUpdateProspect extends HttpServlet {
     private static Prospect prospect;
     private static Boolean test = false;
 
+
+    @Override
     public void init()  {
         test=false;
     }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/FormUpdateProspect.jsp");
         dispatcher.forward(request, response);
     }
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             if (!test) {
@@ -79,17 +85,14 @@ public class ControleurUpdateProspect extends HttpServlet {
                 }
             }
 
-        } catch (ServletException | modelException e) {
-            throw new RuntimeException(e);
-        } catch (NumberFormatException e) {
-            // Gérer l'erreur de conversion des nombres
-            response.sendRedirect("errorPage.jsp");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Exception de) {
+            response.sendRedirect("Error.jsp");
         }
 
     }
 
+
+    @Override
     public void destroy() {
     }
 }

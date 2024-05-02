@@ -19,6 +19,8 @@ import java.io.IOException;
 @WebServlet(name = "inscription", value = "/inscription")
 public class SevletInscription extends HttpServlet {
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String csrfToken = request.getParameter("csrfToken");
         String sessionToken = Tokken.getToken();
@@ -37,10 +39,8 @@ public class SevletInscription extends HttpServlet {
                 // Appel de la méthode create de votre DAO pour insérer le nouveau client dans la base de données
                 DaoUser.create(nouveauUser); // Initialisez votre DAO comme vous le faites habituellement
                 response.sendRedirect("Loggin.jsp");
-            } catch (modelException e) {
-                throw new RuntimeException(e);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (Exception de) {
+                response.sendRedirect("Error.jsp");
             }
         } } else {
             JOptionPane.showMessageDialog(null, "Warning user wuld lhram roh l'accueil");

@@ -20,6 +20,7 @@ public class ServletLoggin extends HttpServlet {
     public static HttpSession session;
 
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (session != null){
             session = request.getSession();
@@ -32,6 +33,8 @@ public class ServletLoggin extends HttpServlet {
 
 
     }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String csrfToken = request.getParameter("csrfToken");
         String sessionToken = Tokken.getToken();
@@ -59,8 +62,8 @@ public class ServletLoggin extends HttpServlet {
                     System.out.println(DaoUser.authenticate(eMail, passWord));
                     response.sendRedirect("loggin");
                 }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (Exception de) {
+                response.sendRedirect("Error.jsp");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Warning user wuld lhram roh l'accueil");

@@ -219,22 +219,26 @@ public class DaoClient {
      * @throws daoException   Si une exception DAO survient.
      */
     private static PreparedStatement getStatement(String query, Client client) throws Exception {
-        Connection connection = Connexion.getInstance();
+
+            Connection connection = Connexion.getInstance();
 
 
-        PreparedStatement statement = connection.prepareStatement(query);
+            try(PreparedStatement statement = connection.prepareStatement(query)) {
 
-        statement.setDouble(1, client.getChiffreAffaire());
-        statement.setString(2, client.getRaisonSociale());
-        statement.setString(3, client.getNumeroRue());
-        statement.setString(4, client.getNomRue());
-        statement.setString(5, client.getVille());
-        statement.setString(6, client.getCodePostal());
-        statement.setString(7, client.getTelephone());
-        statement.setString(8, client.getAdresseMail());
-        statement.setString(9, client.getCommentaire());
-        statement.setInt(10, client.getNbrEmploye());
-        return statement;
+                statement.setDouble(1, client.getChiffreAffaire());
+                statement.setString(2, client.getRaisonSociale());
+                statement.setString(3, client.getNumeroRue());
+                statement.setString(4, client.getNomRue());
+                statement.setString(5, client.getVille());
+                statement.setString(6, client.getCodePostal());
+                statement.setString(7, client.getTelephone());
+                statement.setString(8, client.getAdresseMail());
+                statement.setString(9, client.getCommentaire());
+                statement.setInt(10, client.getNbrEmploye());
+
+                return statement;
+            }
+
     }
 
     /**

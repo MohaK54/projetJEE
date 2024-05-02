@@ -17,7 +17,7 @@ public class ControleurDisplayProspect extends HttpServlet {
 
 
 
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             // Appel de la méthode de votre DAO pour récupérer tous les clients
@@ -33,6 +33,8 @@ public class ControleurDisplayProspect extends HttpServlet {
             throw new ServletException("Erreur lors de la récupération des clients", e);
         }
     }
+
+    @Override
     public void destroy() {
     }
 }

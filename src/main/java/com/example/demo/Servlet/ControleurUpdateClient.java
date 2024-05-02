@@ -21,14 +21,20 @@ public class ControleurUpdateClient extends HttpServlet {
     private static Client client;
     private static Boolean test = false;
 
+
+    @Override
     public void init()  {
 
         test=false;
     }
+
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("FormUpdateClient.jsp");
     }
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
             try {
@@ -96,16 +102,13 @@ public class ControleurUpdateClient extends HttpServlet {
                         response.sendRedirect("index.jsp");
                     }
                 }
-            }catch (ServletException e) {
-                throw new RuntimeException(e);
-            } catch (modelException e) {
-                throw new RuntimeException(e);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            }catch (Exception de) {
+                response.sendRedirect("Error.jsp");
             }
-
     }
 
+
+    @Override
     public void destroy() {
         test=false;
         super.destroy();

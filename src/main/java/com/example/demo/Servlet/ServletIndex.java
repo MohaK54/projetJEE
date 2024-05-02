@@ -14,10 +14,12 @@ import javax.net.ssl.HandshakeCompletedEvent;
 @WebServlet(name = "index", value = "/index")
 public class ServletIndex extends HttpServlet {
 
+    @Override
     public void init() throws ServletException {
 
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
             Cookie cookie = new Cookie("nomCookie", "Jesuisuncookiequesmêmepasaccepte");
@@ -30,6 +32,8 @@ public class ServletIndex extends HttpServlet {
     }
 
 
+
+    @Override
     public void destroy() {
 
     }

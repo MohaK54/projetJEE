@@ -17,9 +17,13 @@ import java.io.IOException;
 @WebServlet(name = "formulaireClient", value = "/formulaireClient")
 public class ControleurFormC extends HttpServlet {
 
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("FormC.jsp");
     }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // Récupération des paramètres du formulaire
         String csrfToken = request.getParameter("csrfToken");
@@ -42,8 +46,8 @@ public class ControleurFormC extends HttpServlet {
 
                 // Appel de la méthode create de votre DAO pour insérer le nouveau client dans la base de données
                 DaoClient.create(nouveauClient); // Initialisez votre DAO comme vous le faites habituellement
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (Exception de) {
+                response.sendRedirect("Error.jsp");
             }
 
 

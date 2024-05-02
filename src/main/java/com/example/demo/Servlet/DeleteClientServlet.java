@@ -20,10 +20,14 @@ public class DeleteClientServlet extends HttpServlet {
     private static Client client;
     private static Boolean test = false;
 
+
+    @Override
     public void init()  {
         test=false;
     }
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             if (!test) {
@@ -49,12 +53,14 @@ public class DeleteClientServlet extends HttpServlet {
                 }
             }
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch (Exception de) {
+            response.sendRedirect("Error.jsp");
         }
 
     }
 
+
+    @Override
     public void destroy() {
     }
 }

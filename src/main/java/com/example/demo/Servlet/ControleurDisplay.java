@@ -19,6 +19,7 @@ public class ControleurDisplay extends HttpServlet {
 
 
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             // Pour supprimer un cookie
@@ -38,6 +39,8 @@ public class ControleurDisplay extends HttpServlet {
             throw new ServletException("Erreur lors de la récupération des clients", e);
         }
     }
+
+    @Override
     public void destroy() {
     }
 }

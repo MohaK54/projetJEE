@@ -16,6 +16,8 @@ import java.util.List;
 
 @WebServlet(name = "choiceProspect", value = {"/choiceProspect","/choiceProspectD"})
 public class ChoiceProspectServlet extends HttpServlet {
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = request.getServletPath();
@@ -47,6 +49,8 @@ public class ChoiceProspectServlet extends HttpServlet {
         }
     }
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String csrfToken = request.getParameter("csrfToken");
