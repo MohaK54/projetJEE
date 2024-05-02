@@ -25,6 +25,10 @@ public class ControleurUpdateProspect extends HttpServlet {
     public void init()  {
         test=false;
     }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/FormUpdateProspect.jsp");
+        dispatcher.forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
