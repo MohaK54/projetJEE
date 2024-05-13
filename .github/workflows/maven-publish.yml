@@ -35,17 +35,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MohaK54_projetJEE
-      - name: Créer le répertoire
-        run: mkdir -p artifacts
-
-      - name: Attendre quelques secondes pour la création du répertoire
-        run: sleep 5  # Attendre 5 secondes
-
       - name: Upload file
         uses: actions/upload-artifact@v4
         with:
           name: package.war
-          path: artifacts/package.war
+          path: target/*.war
+      - name: download file
+        uses: actions/download-artifacts@v4
+        with:
+          name: fichierWAR
 
 
 
