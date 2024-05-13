@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  sqlserver:
+    build:
+      context: ./sql
+      dockerfile: Dockerfile_sqlserver
+    container_name: mon_sqlserver_container
+    ports:
+      - "1433:1433"
+
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile_tomcat
+    container_name: mon_tomcat_container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
