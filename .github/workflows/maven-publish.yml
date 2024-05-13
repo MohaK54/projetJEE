@@ -43,7 +43,7 @@ jobs:
       - name: download file
         uses: actions/download-artifact@v4
         with:
-          name: fichierWAR
+          name: package.war
 
 
 
