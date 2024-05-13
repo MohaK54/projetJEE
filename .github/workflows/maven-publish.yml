@@ -37,7 +37,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MohaK54_projetJEE
       - name: Upload file
         uses: actions/uploaad-artifact@v4
-        width:
+        with:
           name: package.war
 
 
