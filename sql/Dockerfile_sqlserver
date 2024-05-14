@@ -1,8 +1,0 @@
-# Utilisez l'image officielle de Microsoft SQL Server
-FROM mcr.microsoft.com/mssql/server:2019-latest
-
-LABEL maintainer="Mohamed"
-
-COPY dump/creabaseCICD.sql /scripts/
-
-CMD /opt/mssql-tools/bin/sqlcmd -S localhost -E -i /scripts/creabaseCICD.sql
