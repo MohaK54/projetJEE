@@ -7,7 +7,7 @@ LABEL maintainer="Mohamed"
 RUN mkdir -p /usr/local/tomcat/webapps
 
 # Copier votre fichier WAR dans le répertoire webapps de Tomcat
-COPY target/demo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY target/demo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
 
 # Exposer le port sur lequel Tomcat fonctionne (par défaut, c'est 8080)
 EXPOSE 8081
